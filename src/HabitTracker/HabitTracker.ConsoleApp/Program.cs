@@ -87,6 +87,7 @@ internal class Program
 
     private static void GetAllRecords()
     {
+        Console.Clear();
         using var connection = new SqliteConnection(connectionString);
         connection.Open();
         var command = connection.CreateCommand();
@@ -176,7 +177,7 @@ internal class Program
     {
         GetAllRecords();
 
-        var id = GetNumberInput("Please type the ID of the item you want to delete, ot type 0 to return to the main menu.");
+        var id = GetNumberInput("Please type the ID of the item you want to update, or type 0 to return to the main menu.");
         
 
         if (id == 0) GetUserInput();
