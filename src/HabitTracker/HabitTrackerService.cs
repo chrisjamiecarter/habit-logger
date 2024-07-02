@@ -76,21 +76,7 @@ public class HabitTrackerService
 
     public void AddHabitLog(int habitId, DateTime date, int quantity)
     {
-        // Validation.
-        // If habit already has an entry for the date, then merge (increase the quantity).
-        var habitLog = _dataManager.GetHabitLogByHabitIdAndDate(habitId, date);
-
-        if (habitLog == null)
-        {
-            // New date instance. Add.
-            _dataManager.AddHabitLog(habitId, date, quantity);
-        }
-        else
-        {
-            // Additional date instance. Merge.
-            quantity += habitLog.Quantity;
-            _dataManager.SetHabitLog(habitLog.Id, habitId, date, quantity);
-        }
+        _dataManager.AddHabitLog(habitId, date, quantity);
     }
 
     public HabitLog? GetHabitLog(int id)
@@ -147,6 +133,42 @@ public class HabitTrackerService
         foreach (var entity in _dataManager.GetHabitLogReport())
         {
             output.Add(new HabitLogReport(entity));
+        }
+
+        return output;
+    }
+
+    public List<HabitLogReport> GetHabitLogReportByHabitId(int habitId)
+    {
+        var output = new List<HabitLogReport>();
+
+        foreach (var entity in _dataManager.GetHabitLogReportByHabitId(habitId))
+        {
+            output.Add(new HabitLogReport(entity));
+        }
+
+        return output;
+    }
+
+    public List<HabitLogSumReport> GetHabitLogSumReport(DateTime dateFrom, DateTime dateTo)
+    {
+        var output = new List<HabitLogSumReport>();
+
+        foreach (var entity in _dataManager.GetHabitLogSumReport(dateFrom, dateTo))
+        {
+            output.Add(new HabitLogSumReport(entity));
+        }
+
+        return output;
+    }
+
+    public List<HabitLogSumReport> GetHabitLogSumReportByHabitId(DateTime dateFrom, DateTime dateTo, int habitId)
+    {
+        var output = new List<HabitLogSumReport>();
+
+        foreach (var entity in _dataManager.GetHabitLogSumReportByHabitId(dateFrom, dateTo, habitId))
+        {
+            output.Add(new HabitLogSumReport(entity));
         }
 
         return output;

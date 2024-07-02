@@ -77,6 +77,28 @@ internal static class ConsoleHelper
         return output;
     }
 
+    internal static int GetInt(string message, int min, int max)
+    {
+        string? input = "";
+        int output;
+
+        // Display message and await input response.
+        Console.WriteLine(message);
+        input = Console.ReadLine();
+
+        // Validation: Input must be something and an integer.
+        while (string.IsNullOrWhiteSpace(input) || !int.TryParse(input, out _) || int.Parse(input) < min || int.Parse(input) > max)
+        {
+            Console.WriteLine($"Invalid input. {message}");
+            input = Console.ReadLine();
+        }
+
+        // Input has been validated as an integer.
+        output = int.Parse(input);
+
+        return output;
+    }
+
     internal static DateTime? GetDate(string message)
     {
         string? input = "";

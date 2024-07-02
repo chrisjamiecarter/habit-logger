@@ -65,7 +65,7 @@ public partial class SqliteDataManager
             var habitId = habits[Random.Shared.Next(0, habits.Count)].Id;
 
             // Get random Date in the past 90 days.
-            var date = DateTime.Now.AddDays(-Random.Shared.Next(0, 90));
+            var date = DateTime.Now.AddDays(-Random.Shared.Next(0, 90)).Date;
 
             // Get random Quantity between 1 and 10.
             var quantity = Random.Shared.Next(1, 11);

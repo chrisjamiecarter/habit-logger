@@ -1,34 +1,25 @@
 ﻿// --------------------------------------------------------------------------------------------------
-// HabitTracker.Models.HabitLogReport
+// HabitTracker.Models.HabitLogSumReport
 // --------------------------------------------------------------------------------------------------
-// Habit Log Report data transformation object.
+// Habit Log Sum Report data transformation object.
 // --------------------------------------------------------------------------------------------------
 using HabitTracker.Data.Entities;
 
 namespace HabitTracker.Models;
 
-public class HabitLogReport
+public class HabitLogSumReport
 {
     #region Constructors
 
-    public HabitLogReport(HabitLogReportEntity entity)
+    public HabitLogSumReport(HabitLogSumReportEntity entity)
     {
-        Id = entity.Id;
-        HabitId = entity.HabitId;
         Name = entity.Name;
         Measure = entity.Measure;
-        Date = entity.Date;
         Quantity = entity.Quantity;
     }
 
     #endregion
     #region Properties
-
-    public int Id { get; set; }
-
-    public int HabitId { get; set; }
-
-    public DateTime Date { get; set; }
 
     public string? Name { get; set; }
     
