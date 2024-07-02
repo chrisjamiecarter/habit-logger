@@ -299,20 +299,76 @@ internal class MainMenuPage : BasePage
 
     private void ViewHabitLogReportPage()
     {
-        // Get raw data.
-        var habitLogReport = _habitTrackerService.GetHabitLogReport();
+        // Additional specific report support:
+        // Allow user to choose between a report for all habits or a specific one.
+
+        // Get required data.
+        var habits = _habitTrackerService.GetHabits();
+
+        var reportConfig = ConfigureHabitLogReportPage.Show(habits);
+
+        if (reportConfig == null)
+        {
+            // Go back to main menu.
+            return;
+        }
 
         // Configure table data.
         DataTable dataTable = new DataTable();
-        dataTable.Columns.Add("Date");//, typeof(string));
-        dataTable.Columns.Add("Habit");//, typeof(string));
-        dataTable.Columns.Add("Quantity");//, typeof(bool));
-        dataTable.Columns.Add("Measure");//, typeof(bool));
-        foreach (var x in habitLogReport)
+        if (reportConfig.DateFrom.HasValue && reportConfig.DateTo.HasValue)
         {
-            dataTable.Rows.Add([x.Date.ToShortDateString(), x.Name, x.Quantity, x.Measure]);
-        }
+            // View quantity within date range.
+            dataTable.Columns.Add("Habit");
+            dataTable.Columns.Add("Quantity");
+            dataTable.Columns.Add("Measure");
 
+            if (reportConfig.HabitId.HasValue)
+            {
+                // Specific habit.
+                var report = _habitTrackerService.GetHabitLogSumReportByHabitId(reportConfig.DateFrom.Value, reportConfig.DateTo.Value, reportConfig.HabitId.Value);
+                foreach (var x in report)
+                {
+                    dataTable.Rows.Add([x.Name, x.Quantity, x.Measure]);
+                }
+            }
+            else
+            {
+                // All habits.
+                var report = _habitTrackerService.GetHabitLogSumReport(reportConfig.DateFrom.Value, reportConfig.DateTo.Value);
+                foreach (var x in report)
+                {
+                    dataTable.Rows.Add([x.Name, x.Quantity, x.Measure]);
+                }
+            }
+        }
+        else
+        {
+            // View all dates.
+            dataTable.Columns.Add("Date");
+            dataTable.Columns.Add("Habit");
+            dataTable.Columns.Add("Quantity");
+            dataTable.Columns.Add("Measure");
+
+            if (reportConfig.HabitId.HasValue)
+            {
+                // Specific habit.
+                var report = _habitTrackerService.GetHabitLogReportByHabitId(reportConfig.HabitId.Value);
+                foreach (var x in report)
+                {
+                    dataTable.Rows.Add([x.Date.ToShortDateString(), x.Name, x.Quantity, x.Measure]);
+                }
+            }
+            else
+            {
+                // All habits.
+                var report = _habitTrackerService.GetHabitLogReport();
+                foreach (var x in report)
+                {
+                    dataTable.Rows.Add([x.Date.ToShortDateString(), x.Name, x.Quantity, x.Measure]);
+                }
+            }
+        }
+        
         // Configure console table.
         var consoleTable = ConsoleTableBuilder.From(dataTable);
 

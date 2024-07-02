@@ -83,17 +83,30 @@ public partial class SqliteDataManager
 
     public void AddHabitLog(int habitId, DateTime date, int quantity)
     {
-        using var connection = new SqliteConnection(ConnectionString);
-        connection.Open();
+        // Validation.
+        // If habit already has an entry for the date, then merge (increase the quantity).
+        var habitLog = GetHabitLogByHabitIdAndDate(habitId, date);
 
-        using var command = connection.CreateCommand();
-        command.CommandText = AddHabitLogQuery;
-        command.Parameters.Add("$habit_id", SqliteType.Integer).Value = habitId;
-        command.Parameters.Add("$date", SqliteType.Text).Value = date.ToString(FormatString.ISO8601);
-        command.Parameters.Add("$quantity", SqliteType.Integer).Value = quantity;
-        command.ExecuteNonQuery();
+        if (habitLog == null)
+        {
+            using var connection = new SqliteConnection(ConnectionString);
+            connection.Open();
 
-        connection.Close();
+            using var command = connection.CreateCommand();
+            command.CommandText = AddHabitLogQuery;
+            command.Parameters.Add("$habit_id", SqliteType.Integer).Value = habitId;
+            command.Parameters.Add("$date", SqliteType.Text).Value = date.ToString(FormatString.ISO8601);
+            command.Parameters.Add("$quantity", SqliteType.Integer).Value = quantity;
+            command.ExecuteNonQuery();
+
+            connection.Close();
+        }
+        else
+        {
+            // Additional date instance. Merge.
+            quantity += habitLog.Quantity;
+            SetHabitLog(habitLog.Id, habitId, date, quantity);
+        }
     }
 
     #endregion

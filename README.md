@@ -27,6 +27,10 @@ The application is a console based user interface where users can navigate the f
 
 	Manage all entries in the database. Add, activate, or deactivate habits. Update or delete habit log entries.
 
+- **Database Seeing**
+
+	Turn on `GenerateSeedData` in appsettings.json if you wish to generate test data on initial database creation.
+
 ## Getting Started
 
 ### Prerequisites
@@ -78,6 +82,8 @@ Choose option **2** to view the habit report:
 
 Choose option **3** to  view the habit log report:
 
+This option now allows you to select all or specific habits to report on, and optionally specify a date range. This will allow you to see the sum of a habits quantity over the date range.
+
 ![habit tracker habit log report](./img/habit-tracker-habit-log-report.png)
 
 Choose option **4** to add a habit to record against:
@@ -114,6 +120,7 @@ Choose option **8** to delete a habit log entry:
 
 - **Menu Navigation**: Navigate the application through the menu options to perform an action.
 - **Data Storage**: A new sqlite database is created and the required schema is set up at run-time, or an existing database is used if previously created.
+- **Data Seeding**: If the associated configuration setting is set and there are no habits in the database, a set of mock habits will be added, as well as 100 random habit logs
 - **Report Display**: Uses the library [Console Table Ext](https://github.com/minhhungit/ConsoleTableExt) to display structured and formatted tables.
 
 ## Database
