@@ -12,7 +12,7 @@ public partial class SqliteDataManager
 {
     #region Constants
 
-    internal static readonly string AddHabitQuery =
+    private static readonly string AddHabitQuery =
         @"
         INSERT INTO habit
         (
@@ -26,7 +26,7 @@ public partial class SqliteDataManager
         )
         ;";
 
-    internal static readonly string GetHabitQuery =
+    private static readonly string GetHabitQuery =
         @"
         SELECT
             * 
@@ -36,7 +36,7 @@ public partial class SqliteDataManager
             habit_id = $habit_id
         ;";
 
-    internal static readonly string GetHabitsQuery =
+    private static readonly string GetHabitsQuery =
         @"
         SELECT
             * 
@@ -44,7 +44,7 @@ public partial class SqliteDataManager
             habit
         ;";
 
-    internal static readonly string GetHabitsByIsActiveQuery =
+    private static readonly string GetHabitsByIsActiveQuery =
         @"
         SELECT 
             * 
@@ -54,7 +54,7 @@ public partial class SqliteDataManager
             is_active = $is_active
         ;";
 
-    internal static readonly string SetHabitQuery =
+    private static readonly string SetHabitQuery =
         @"
         UPDATE
             habit
@@ -65,7 +65,7 @@ public partial class SqliteDataManager
             habit_id = $habit_id
         ;";
 
-    internal static readonly string SetHabitIsActiveQuery =
+    private static readonly string SetHabitIsActiveQuery =
         @"
         UPDATE
             habit

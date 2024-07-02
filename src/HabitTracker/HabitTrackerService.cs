@@ -153,4 +153,13 @@ public class HabitTrackerService
     }
 
     #endregion
+    #region Methods: Public - SeedDatabase
+
+    public void SeedDatabase()
+    {
+        _dataManager.SeedDatabase();
+    }
+
+    #endregion
+
 }
