@@ -27,7 +27,7 @@ The application is a console based user interface where users can navigate the f
 
 	Manage all entries in the database. Add, activate, or deactivate habits. Update or delete habit log entries.
 
-- **Database Seeing**
+- **Database Seeding**
 
 	Turn on `GenerateSeedData` in appsettings.json if you wish to generate test data on initial database creation.
 
