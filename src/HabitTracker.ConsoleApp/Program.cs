@@ -12,7 +12,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        // Configure appsettings. Required for database connection string.
+        // Configure appsettings.
         IConfigurationRoot config = new ConfigurationBuilder()
             .AddJsonFile("appsettings.json")
             .Build();
@@ -27,6 +27,15 @@ internal class Program
 
         // Create the required service.
         var habitTrackerService = new HabitTrackerService(databaseConnectionString!);
+        
+        // Get if seed data if required or not.
+        bool generateSeedData = config.GetValue<bool>("Development:GenerateSeedData");
+        if (generateSeedData)
+        {
+            Console.WriteLine("Generating seed data. Please wait...");
+            habitTrackerService.SeedDatabase();
+            Console.WriteLine("Seed data generated.");
+        }
 
         // Show the main menu.
         var mainMenu = new MainMenuPage(habitTrackerService);
