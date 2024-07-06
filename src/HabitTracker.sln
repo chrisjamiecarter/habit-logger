@@ -5,9 +5,16 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HabitTracker.ConsoleApp", "HabitTracker.ConsoleApp\HabitTracker.ConsoleApp.csproj", "{9EB8BC21-71AE-4B95-BD33-A249503FB23B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HabitTracker", "HabitTracker\HabitTracker.csproj", "{5D65C087-EE52-471A-AA8E-E7382044C95D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HabitTracker", "HabitTracker\HabitTracker.csproj", "{5D65C087-EE52-471A-AA8E-E7382044C95D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HabitTracker.Data", "HabitTracker.Data\HabitTracker.Data.csproj", "{15E0770C-6092-458C-8E6B-DA2FD6DF0B65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HabitTracker.Data", "HabitTracker.Data\HabitTracker.Data.csproj", "{15E0770C-6092-458C-8E6B-DA2FD6DF0B65}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{55D0BEC6-5ECD-4723-927C-CD43DC521DA0}"
+	ProjectSection(SolutionItems) = preProject
+		..\.gitignore = ..\.gitignore
+		..\LICENSE = ..\LICENSE
+		..\README.md = ..\README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

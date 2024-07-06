@@ -46,7 +46,7 @@ The application is a console based user interface where users can navigate the f
 	- `git clone https://github.com/cjc-sweatbox/habit-tracker.git`
 
 2. Navigate to the project directory:
-	- `cd src\math-game\HabitTracker.ConsoleApp`
+	- `cd src\habit-tracker\HabitTracker.ConsoleApp`
 
 3. Run the application using the .NET CLI:
 	- `dotnet run`
