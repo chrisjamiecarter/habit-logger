@@ -112,7 +112,7 @@ internal static class ConsoleHelper
             return output;
         }
 
-        while (string.IsNullOrWhiteSpace(input) || !DateTime.TryParseExact(input, "yyyy-MM-dd", new CultureInfo("en-GB"), DateTimeStyles.None, out _))
+        while (string.IsNullOrWhiteSpace(input) || !DateTime.TryParseExact(input, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out _))
         {
             if (!string.IsNullOrWhiteSpace(input) && input == "0")
             {
@@ -123,7 +123,35 @@ internal static class ConsoleHelper
             input = Console.ReadLine();
         }
 
-        output = DateTime.ParseExact(input, "yyyy-MM-dd", new CultureInfo("en-GB"));
+        output = DateTime.ParseExact(input, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+        return output;
+    }
+
+    internal static DateTime? GetDateAfter(string message, DateTime afterDateTime)
+    {
+        string? input = "";
+        DateTime? output = null;
+
+        Console.WriteLine(message);
+        input = Console.ReadLine();
+
+        if (!string.IsNullOrWhiteSpace(input) && input == "0")
+        {
+            return output;
+        }
+
+        while (string.IsNullOrWhiteSpace(input) || !DateTime.TryParseExact(input, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out _) || !(DateTime.ParseExact(input, "yyyy-MM-dd", CultureInfo.InvariantCulture) > afterDateTime))
+        {
+            if (!string.IsNullOrWhiteSpace(input) && input == "0")
+            {
+                return output;
+            }
+
+            Console.WriteLine($"Invalid input. {message}");
+            input = Console.ReadLine();
+        }
+
+        output = DateTime.ParseExact(input, "yyyy-MM-dd", CultureInfo.InvariantCulture);
         return output;
     }
 

@@ -91,7 +91,7 @@ internal class ConfigureHabitLogReportPage : BasePage
                 DateTime? userDateFrom = ConsoleHelper.GetDate($"Enter the report start date (format yyyy-MM-dd) or 0 for min date: ");
                 dateFrom = userDateFrom.HasValue ? userDateFrom.Value : DateTime.MinValue;
 
-                DateTime? userDateTo = ConsoleHelper.GetDate($"Enter the report end date (format yyyy-MM-dd) or 0 for max date: ");
+                DateTime? userDateTo = ConsoleHelper.GetDateAfter($"Enter the report end date (format yyyy-MM-dd and after {dateFrom.Value:yyyy-MM-dd}) or 0 for max date: ", dateFrom.Value);
                 dateTo = userDateTo.HasValue ? userDateTo.Value : DateTime.MaxValue;
                 break;
             default:
