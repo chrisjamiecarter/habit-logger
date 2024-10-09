@@ -1,11 +1,9 @@
 <div align="center">
-
-<img src="./img/habit-tracker-logo.png" alt="habit tracker logo" width="100px" />
-<h1>Habit Tracker</h1>
-
+	<img src="./_resources/habit-logger-logo.png" alt="habit logger logo" width="100px" />
+	<h1>Habit Logger</h1>
 </div>
 
-Welcome to the Habit Tracker App!
+Welcome to the Habit Logger App!
 
 This is a simple interactive application that was built as a demo application to demonstrate CRUD operations against a database.
 
@@ -43,10 +41,10 @@ The application is a console based user interface where users can navigate the f
 #### Console
 
 1. Clone the repository:
-	- `git clone https://github.com/cjc-sweatbox/habit-tracker.git`
+	- `git clone https://github.com/cjc-sweatbox/habit-logger.git`
 
 2. Navigate to the project directory:
-	- `cd src\habit-tracker\HabitTracker.ConsoleApp`
+	- `cd src\habit-logger\HabitLogger.ConsoleApp`
 
 3. Run the application using the .NET CLI:
 	- `dotnet run`
@@ -60,11 +58,11 @@ The application is a console based user interface where users can navigate the f
 
 When you start the application, you will be presented with the main menu:
 
-![habit tracker main menu](./img/habit-tracker-main-menu.png)
+![habit logger main menu](./_resources/habit-logger-main-menu.png)
 
 Choose option **0** to close the application:
 
-![habit tracker close application](./img/habit-tracker-close-application.png)
+![habit logger close application](./_resources/habit-logger-close-application.png)
 
 Choose option **1** to record doing a habit:
 - If there are active habits:
@@ -74,21 +72,21 @@ Choose option **1** to record doing a habit:
 - If there are no active habits:
 	- You will be unable to record a habit.
 
-![habit tracker habit menu record](./img/habit-tracker-habit-menu-record.png)
+![habit logger habit menu record](./_resources/habit-logger-habit-menu-record.png)
 
 Choose option **2** to view the habit report:
 
-![habit tracker habit report](./img/habit-tracker-habit-report.png)
+![habit logger habit report](./_resources/habit-logger-habit-report.png)
 
 Choose option **3** to  view the habit log report:
 
 This option now allows you to select all or specific habits to report on, and optionally specify a date range. This will allow you to see the sum of a habits quantity over the date range.
 
-![habit tracker habit log report](./img/habit-tracker-habit-log-report.png)
+![habit logger habit log report](./_resources/habit-logger-habit-log-report.png)
 
 Choose option **4** to add a habit to record against:
 
-![habit tracker add habit](./img/habit-tracker-add-habit.png)
+![habit logger add habit](./_resources/habit-logger-add-habit.png)
 
 Choose option **5** to activate an inactive habit:
 - If there are inactive habits:
@@ -97,7 +95,7 @@ Choose option **5** to activate an inactive habit:
 - If there are no inactive habits:
 	- You will be unable to activate a habit.
 
-![habit tracker activate habit](./img/habit-tracker-habit-menu-activate.png)
+![habit logger activate habit](./_resources/habit-logger-habit-menu-activate.png)
 
 Choose option **6** to deactivate an active habit:
 - If there are active habits:
@@ -106,15 +104,15 @@ Choose option **6** to deactivate an active habit:
 - If there are no active habits:
 	- You will be unable to deactivate a habit.
 
-![habit tracker deactivate habit](./img/habit-tracker-habit-menu-deactivate.png)
+![habit logger deactivate habit](./_resources/habit-logger-habit-menu-deactivate.png)
 
 Choose option **7** to update a habit log entry:
 
-![habit tracker update habit log](./img/habit-tracker-habit-log-menu-update.png)
+![habit logger update habit log](./_resources/habit-logger-habit-log-menu-update.png)
 
 Choose option **8** to delete a habit log entry:
 
-![habit tracker delete habit log](./img/habit-tracker-habit-log-menu-delete.png)
+![habit logger delete habit log](./_resources/habit-logger-habit-log-menu-delete.png)
 
 ## How It Works
 
@@ -125,7 +123,7 @@ Choose option **8** to delete a habit log entry:
 
 ## Database
 
-![habit tracker entity relationship diagram](./img/habit-tracker-entity-relationship-diagram.png)
+![habit logger entity relationship diagram](./_resources/habit-logger-entity-relationship-diagram.png)
 
 ## Contributing
 
@@ -140,4 +138,4 @@ This project is licensed under the MIT License. See the [LICENSE](./LICENSE) fil
 For any questions or feedback, please open an issue.
 
 ---
-***Happy Habit Tracking!***
+***Happy Habit Logging!***
