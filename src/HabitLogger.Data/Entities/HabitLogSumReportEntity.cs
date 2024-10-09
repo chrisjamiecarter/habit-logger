@@ -1,13 +1,11 @@
-﻿// --------------------------------------------------------------------------------------------------
-// HabitLogger.Data.Entities.HabitLogSumReportEntity
-// --------------------------------------------------------------------------------------------------
-// Represents a modified database entity in the vw_habit_log_report view.
-// --------------------------------------------------------------------------------------------------
-using System.Data;
+﻿using System.Data;
 using HabitLogger.Data.Extensions;
 
 namespace HabitLogger.Data.Entities;
 
+/// <summary>
+/// Represents a modified database entity in the vw_habit_log_report view.
+/// </summary>
 public class HabitLogSumReportEntity
 {
     #region Constructors

@@ -1,12 +1,12 @@
-﻿// --------------------------------------------------------------------------------------------------
-// HabitLogger.Models.HabitLogReport
-// --------------------------------------------------------------------------------------------------
-// Habit Log Report data transformation object.
-// --------------------------------------------------------------------------------------------------
-using HabitLogger.Data.Entities;
+﻿using HabitLogger.Data.Entities;
 
 namespace HabitLogger.Models;
 
+/// <summary>
+/// Represents a HabitLogReport data transfer object (DTO), 
+/// providing detailed information about a logged Habit, including the name, 
+/// measurement, date, and quantity, with initialization from an entity.
+/// </summary>
 public class HabitLogReport
 {
     #region Constructors

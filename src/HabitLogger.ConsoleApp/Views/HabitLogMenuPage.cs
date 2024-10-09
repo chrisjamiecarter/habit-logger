@@ -1,9 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------
-// HabitLogger.ConsoleApp.Views.HabitLogMenuPage
-// --------------------------------------------------------------------------------------------------
-// Displays a list of HabitLogs to a user and returns the users selection.
-// --------------------------------------------------------------------------------------------------
-using System.Text;
+﻿using System.Text;
 using ConsoleTableExt;
 using HabitLogger.ConsoleApp.Enums;
 using HabitLogger.ConsoleApp.Utilities;
@@ -11,6 +6,9 @@ using HabitLogger.Models;
 
 namespace HabitLogger.ConsoleApp.Views;
 
+/// <summary>
+/// Represents the page for displaying a list of <see cref="HabitLog"/> for user selection.
+/// </summary>
 internal class HabitLogMenuPage : BasePage
 {
     #region Constants
@@ -24,11 +22,11 @@ internal class HabitLogMenuPage : BasePage
     {
         get
         {
-            var sb = new StringBuilder();
-            sb.AppendLine("Select an option...");
-            sb.AppendLine();
-            sb.AppendLine("0 - Back to main menu");
-            return sb.ToString();
+            var builder = new StringBuilder();
+            builder.AppendLine("Select an option...");
+            builder.AppendLine();
+            builder.AppendLine("0 - Back to main menu");
+            return builder.ToString();
         }
     }
 

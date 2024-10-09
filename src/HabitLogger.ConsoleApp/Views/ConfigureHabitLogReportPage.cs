@@ -1,14 +1,12 @@
-﻿// --------------------------------------------------------------------------------------------------
-// HabitLogger.ConsoleApp.Views.ConfigureHabitLogReportPage
-// --------------------------------------------------------------------------------------------------
-// Gets the required input from a user to configure the habit log report.
-// --------------------------------------------------------------------------------------------------
-using System.Text;
+﻿using System.Text;
 using HabitLogger.ConsoleApp.Utilities;
 using HabitLogger.Models;
 
 namespace HabitLogger.ConsoleApp.Views;
 
+/// <summary>
+/// Represents the page for creating a <see cref="HabitLogReportConfiguration"/>.
+/// </summary>
 internal class ConfigureHabitLogReportPage : BasePage
 {
     #region Constants
@@ -22,14 +20,14 @@ internal class ConfigureHabitLogReportPage : BasePage
     {
         get
         {
-            var sb = new StringBuilder();
-            sb.AppendLine("Select an option...");
-            sb.AppendLine();
-            sb.AppendLine("0 - Back to main menu");
-            sb.AppendLine("1 - View all dates");
-            sb.AppendLine("2 - View quantity within date range");
-            sb.AppendLine();
-            return sb.ToString();
+            var builder = new StringBuilder();
+            builder.AppendLine("Select an option...");
+            builder.AppendLine();
+            builder.AppendLine("0 - Back to main menu");
+            builder.AppendLine("1 - View all dates");
+            builder.AppendLine("2 - View quantity within date range");
+            builder.AppendLine();
+            return builder.ToString();
 
         }
     }
@@ -88,10 +86,10 @@ internal class ConfigureHabitLogReportPage : BasePage
                 break;
             case 2:
                 // View quantity within date range.
-                DateTime? userDateFrom = ConsoleHelper.GetDate($"Enter the report start date (format yyyy-MM-dd) or 0 for min date: ");
+                DateTime? userDateFrom = ConsoleHelper.GetDate($"Enter the report start date (format yyyy-MM-dd) or 0 for min date: ", "yyyy-MM-dd");
                 dateFrom = userDateFrom.HasValue ? userDateFrom.Value : DateTime.MinValue;
 
-                DateTime? userDateTo = ConsoleHelper.GetDateAfter($"Enter the report end date (format yyyy-MM-dd and after {dateFrom.Value:yyyy-MM-dd}) or 0 for max date: ", dateFrom.Value);
+                DateTime? userDateTo = ConsoleHelper.GetDateAfter($"Enter the report end date (format yyyy-MM-dd and after {dateFrom.Value:yyyy-MM-dd}) or 0 for max date: ", "yyyy-MM-dd", dateFrom.Value);
                 dateTo = userDateTo.HasValue ? userDateTo.Value : DateTime.MaxValue;
                 break;
             default:

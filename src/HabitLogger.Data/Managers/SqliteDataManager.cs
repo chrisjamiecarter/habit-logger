@@ -1,12 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------
-// HabitLogger.Data.Managers.SqliteDataManager
-// --------------------------------------------------------------------------------------------------
-// Partial class for data manager methods specific to the Table/View creation instead of entities.
-// --------------------------------------------------------------------------------------------------
-using Microsoft.Data.Sqlite;
+﻿using Microsoft.Data.Sqlite;
 
 namespace HabitLogger.Data.Managers;
 
+/// <summary>
+/// Partial class for data manager methods specific to the Table/View creation instead of entities.
+/// </summary>
 public partial class SqliteDataManager
 {
     #region Constants

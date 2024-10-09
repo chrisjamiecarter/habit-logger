@@ -1,13 +1,12 @@
-﻿// --------------------------------------------------------------------------------------------------
-// HabitLogger.HabitLoggerService
-// --------------------------------------------------------------------------------------------------
-// Provides interations from view to database.
-// --------------------------------------------------------------------------------------------------
-using HabitLogger.Models;
+﻿using HabitLogger.Models;
 using HabitLogger.Data.Managers;
 
 namespace HabitLogger;
 
+/// <summary>
+/// Provides methods to interact with the database for managing <see cref="Habit"/>, 
+/// <see cref="HabitLog"/>, <see cref="HabitReport"/> and <see cref="HabitLogReport"/> entities.
+/// </summary>
 public class HabitLoggerService
 {
     #region Fields

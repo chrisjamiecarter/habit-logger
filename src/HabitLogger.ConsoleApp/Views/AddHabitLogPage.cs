@@ -1,13 +1,11 @@
-﻿// --------------------------------------------------------------------------------------------------
-// HabitLogger.ConsoleApp.Views.AddHabitLogPage
-// --------------------------------------------------------------------------------------------------
-// Gets the required input from a user to add a new habit log.
-// --------------------------------------------------------------------------------------------------
-using HabitLogger.ConsoleApp.Utilities;
+﻿using HabitLogger.ConsoleApp.Utilities;
 using HabitLogger.Models;
 
 namespace HabitLogger.ConsoleApp.Views;
 
+/// <summary>
+/// Represents the page for recording a new <see cref="HabitLog"/> entry.
+/// </summary>
 internal class AddHabitLogPage : BasePage
 {
     #region Constants
@@ -25,7 +23,7 @@ internal class AddHabitLogPage : BasePage
 
         WriteHeader($"{PageTitle} ({habit.Name})");
 
-        DateTime? date = ConsoleHelper.GetDate("Enter the date (format yyyy-MM-dd) or 0 to return to main menu: ");
+        DateTime? date = ConsoleHelper.GetDate("Enter the date (format yyyy-MM-dd) or 0 to return to main menu: ", "yyyy-MM-dd");
         if (!date.HasValue)
         {
             return nullHabitLog;

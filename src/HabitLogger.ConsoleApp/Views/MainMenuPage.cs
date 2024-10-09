@@ -1,18 +1,15 @@
-﻿// --------------------------------------------------------------------------------------------------
-// HabitLogger.ConsoleApp.Views.MainMenuPage
-// --------------------------------------------------------------------------------------------------
-// The main menu page view for the application.
-// --------------------------------------------------------------------------------------------------
-using System.Data;
+﻿using System.Data;
 using System.Text;
 using ConsoleTableExt;
-using HabitLogger;
 using HabitLogger.ConsoleApp.Enums;
 using HabitLogger.ConsoleApp.Utilities;
 using HabitLogger.Models;
 
 namespace HabitLogger.ConsoleApp.Views;
 
+/// <summary>
+/// Represents the main menu page for the application. It displays a list of options for user selection.
+/// </summary>
 internal class MainMenuPage : BasePage
 {
     #region Constants
@@ -39,27 +36,27 @@ internal class MainMenuPage : BasePage
     {
         get
         {
-            var sb = new StringBuilder();
-            sb.AppendLine("Select an option...");
-            sb.AppendLine();
-            sb.AppendLine("0 - Close application");
-            sb.AppendLine();
-            sb.AppendLine("- Recording -");
-            sb.AppendLine("1 - Record habit");
-            sb.AppendLine();
-            sb.AppendLine("- Reporting -");
-            sb.AppendLine("2 - View habit report");
-            sb.AppendLine("3 - View habit log report");
-            sb.AppendLine();
-            sb.AppendLine("- Management -");
-            sb.AppendLine("4 - Add new habit");
-            sb.AppendLine("5 - Activate habit");
-            sb.AppendLine("6 - Deactivate habit");
-            sb.AppendLine("7 - Update habit log entry");
-            sb.AppendLine("8 - Delete habit log entry");
-            sb.AppendLine();
+            var builder = new StringBuilder();
+            builder.AppendLine("Select an option...");
+            builder.AppendLine();
+            builder.AppendLine("0 - Close application");
+            builder.AppendLine();
+            builder.AppendLine("- Recording -");
+            builder.AppendLine("1 - Record habit");
+            builder.AppendLine();
+            builder.AppendLine("- Reporting -");
+            builder.AppendLine("2 - View habit report");
+            builder.AppendLine("3 - View habit log report");
+            builder.AppendLine();
+            builder.AppendLine("- Management -");
+            builder.AppendLine("4 - Add new habit");
+            builder.AppendLine("5 - Activate habit");
+            builder.AppendLine("6 - Deactivate habit");
+            builder.AppendLine("7 - Update habit log entry");
+            builder.AppendLine("8 - Delete habit log entry");
+            builder.AppendLine();
 
-            return sb.ToString();
+            return builder.ToString();
         }
     }
 
@@ -157,59 +154,46 @@ internal class MainMenuPage : BasePage
 
     private void NewHabit()
     {
-        // Get required data.
         var habit = AddHabitPage.Show();
         if (habit == null)
         {
             return;
         }
 
-        // Add to database.
         _habitLoggerService.AddHabit(habit.Name!, habit.Measure!);
 
-        // Display output.
         MessagePage.Show("New Habit", $"Habit added successfully.");
     }
 
     private void RecordHabit()
     {
-        // Get all active habits.
         var habits = _habitLoggerService.GetHabitsByIsActive(true);
-
-        // There has to be a Habit added to record against.
         if (habits.Count < 1)
         {
             MessagePage.Show("Error", "No active habits.");
             return;
         }
 
-        // Get habit to record against.
         var habit = HabitMenuPage.Show("Record", habits);
         if (habit == null)
         {
             return;
         }
 
-        // Get required data.
         var habitLog = AddHabitLogPage.Show(habit);
         if (habitLog == null)
         {
             return;
         }
 
-        // Add to database.
         _habitLoggerService.AddHabitLog(habit.Id, habitLog.Date, habitLog.Quantity);
 
-        // Display output.
         MessagePage.Show("Record Habit", $"Habit recorded successfully.");
     }
 
     private void SetHabitIsActive(bool setToStatus)
     {
-        // Get all habits NOT the SetToStatus.
         var habits = _habitLoggerService.GetHabitsByIsActive(!setToStatus);
-
-        // There has to be a Habit returned.
         if (habits.Count < 1)
         {
             MessagePage.Show("Error", $"No {(setToStatus ? "inactive" : "active")} habits.");
@@ -218,83 +202,66 @@ internal class MainMenuPage : BasePage
 
         var action = setToStatus ? "Activate" : "Deactivate";
 
-        // Get habit to record against.
         var habit = HabitMenuPage.Show(action, habits);
         if (habit == null)
         {
             return;
         }
 
-        // Update database.
         _habitLoggerService.SetHabitIsActive(habit.Id, setToStatus);
 
-        // Display output.
         MessagePage.Show($"{action} Habit", $"Habit {(setToStatus ? "activated" : "deactivated")} successfully.");
     }
 
     private void UpdateHabitLog()
     {
-        // Get all habits logs.
         var habitLogs = _habitLoggerService.GetHabitLogReport();
-
-        // There has to be something returned.
         if (habitLogs.Count < 1)
         {
             MessagePage.Show("Error", $"No habit logs found.");
             return;
         }
 
-        // Get object to record against.
         HabitLog? oldHabitLog = HabitLogMenuPage.Show("Update", habitLogs);
         if (oldHabitLog == null)
         {
             return;
         }
 
-        // Get related object.
         Habit? habit = _habitLoggerService.GetHabit(oldHabitLog.HabitId);
         if (habit == null)
         {
             return;
         }
 
-        // Get required data.
         HabitLog? newHabitLog = SetHabitLogPage.Show(habit, oldHabitLog);
         if (newHabitLog == null)
         {
             return;
         }
 
-        // Update database.
         _habitLoggerService.SetHabitLog(oldHabitLog.Id, habit.Id, newHabitLog.Date, newHabitLog.Quantity);
 
-        // Display output.
         MessagePage.Show("Update Habit Log Entry", $"Habit log entry updated successfully.");
     }
 
     private void DeleteHabitLog()
     {
-        // Get all habits logs.
         var habitLogs = _habitLoggerService.GetHabitLogReport();
-
-        // There has to be something returned.
         if (habitLogs.Count < 1)
         {
             MessagePage.Show("Error", $"No habit logs found.");
             return;
         }
 
-        // Get object to record against.
         HabitLog? habitLog = HabitLogMenuPage.Show("Delete", habitLogs);
         if (habitLog == null)
         {
             return;
         }
 
-        // Update database.
         _habitLoggerService.DeleteHabitLog(habitLog.Id);
 
-        // Display output.
         MessagePage.Show("Delete Habit Log Entry", $"Habit log entry deleted successfully.");
     }
 
@@ -303,18 +270,15 @@ internal class MainMenuPage : BasePage
         // Additional specific report support:
         // Allow user to choose between a report for all habits or a specific one.
 
-        // Get required data.
         var habits = _habitLoggerService.GetHabits();
 
         var reportConfig = ConfigureHabitLogReportPage.Show(habits);
-
         if (reportConfig == null)
         {
             // Go back to main menu.
             return;
         }
 
-        // Configure table data.
         var dataTable = new DataTable();
         if (reportConfig.DateFrom.HasValue && reportConfig.DateTo.HasValue)
         {
@@ -370,19 +334,15 @@ internal class MainMenuPage : BasePage
             }
         }
 
-        // Configure console table.
         var consoleTable = ConsoleTableBuilder.From(dataTable);
 
-        // Display report.
         MessagePage.Show("Habit Log Report", consoleTable.Export().ToString());
     }
 
     private void ViewHabitReportPage()
     {
-        // Get raw data.
         var habitReport = _habitLoggerService.GetHabitReport();
 
-        // Configure table data.
         var dataTable = new DataTable();
         dataTable.Columns.Add("Name");
         dataTable.Columns.Add("Measure");
@@ -392,10 +352,8 @@ internal class MainMenuPage : BasePage
             dataTable.Rows.Add([x.Name, x.Measure, x.IsActive]);
         }
 
-        // Configure console table.
         var consoleTable = ConsoleTableBuilder.From(dataTable);
 
-        // Display report.
         MessagePage.Show("Habit Report", consoleTable.Export().ToString());
     }
 

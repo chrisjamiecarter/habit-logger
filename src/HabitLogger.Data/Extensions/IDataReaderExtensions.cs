@@ -1,13 +1,11 @@
-﻿// --------------------------------------------------------------------------------------------------
-// HabitLogger.Data.Extensions.IDataReaderExtensions
-// --------------------------------------------------------------------------------------------------
-// Extensions for System.Data.IDataReader.
-// Notably allowing retrieval of a value via column name (ordinal) rather than index.
-// --------------------------------------------------------------------------------------------------
-using System.Data;
+﻿using System.Data;
 
 namespace HabitLogger.Data.Extensions;
 
+/// <summary>
+/// Extensions for System.Data.IDataReader.
+/// Notably allowing retrieval of a value via column name (ordinal) rather than index.
+/// </summary>
 public static class IDataReaderExtensions
 {
     public static bool GetBoolean(this IDataReader reader, string columnName)
