@@ -1,12 +1,12 @@
-﻿// --------------------------------------------------------------------------------------------------
-// HabitLogger.Models.Habit
-// --------------------------------------------------------------------------------------------------
-// Habit data transformation object.
-// --------------------------------------------------------------------------------------------------
-using HabitLogger.Data.Entities;
+﻿using HabitLogger.Data.Entities;
 
 namespace HabitLogger.Models;
 
+/// <summary>
+/// Represents a Habit data transfer object (DTO), encapsulating the Habit's 
+/// ID, name, measurement, and active status, and providing constructors 
+/// for initialization from both entities and raw data.
+/// </summary>
 public class Habit
 {
     #region Constructors
@@ -23,8 +23,6 @@ public class Habit
     {
         Name = name;
         Measure = measure;
-
-        // Default to active.
         IsActive = true;
     }
 

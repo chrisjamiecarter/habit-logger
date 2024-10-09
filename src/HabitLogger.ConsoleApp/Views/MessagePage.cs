@@ -1,11 +1,8 @@
-﻿// --------------------------------------------------------------------------------------------------
-// HabitLogger.ConsoleApp.Views.MessagePage
-// --------------------------------------------------------------------------------------------------
-// A page which displays a parameterised message and title.
-// --------------------------------------------------------------------------------------------------
+﻿namespace HabitLogger.ConsoleApp.Views;
 
-namespace HabitLogger.ConsoleApp.Views;
-
+/// <summary>
+/// A page which displays a parameterised message and title. 
+/// </summary>
 internal class MessagePage : BasePage
 {
     #region Methods: Internal

@@ -10,6 +10,9 @@ using HabitLogger.Models;
 
 namespace HabitLogger.ConsoleApp.Views;
 
+/// <summary>
+/// Represents the page for displaying a list of <see cref="Habit"/> for user selection.
+/// </summary>
 internal class HabitMenuPage : BasePage
 {
     #region Constants
@@ -67,19 +70,19 @@ internal class HabitMenuPage : BasePage
 
     private static string MenuText(List<Habit> habits)
     {
-        var sb = new StringBuilder();
-        sb.AppendLine("Select an option...");
-        sb.AppendLine();
-        sb.AppendLine("0 - Back to main menu");
+        var builder = new StringBuilder();
+        builder.AppendLine("Select an option...");
+        builder.AppendLine();
+        builder.AppendLine("0 - Back to main menu");
 
         for (int i = 0; i < habits.Count; i++)
         {
-            sb.AppendLine($"{i + 1} - {habits[i].Name}");
+            builder.AppendLine($"{i + 1} - {habits[i].Name}");
         }
 
-        sb.AppendLine();
+        builder.AppendLine();
 
-        return sb.ToString();
+        return builder.ToString();
     }
 
     #endregion

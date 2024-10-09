@@ -1,13 +1,11 @@
-﻿// --------------------------------------------------------------------------------------------------
-// HabitLogger.ConsoleApp.Views.BasePage
-// --------------------------------------------------------------------------------------------------
-// The base class for any page view.
-// --------------------------------------------------------------------------------------------------
-using System.Text;
+﻿using System.Text;
 using HabitLogger.Constants;
 
 namespace HabitLogger.ConsoleApp.Views;
 
+/// <summary>
+/// Provides a base class for console application pages, facilitating header and footer display.
+/// </summary>
 internal abstract class BasePage
 {
     #region Methods: Protected
@@ -28,12 +26,12 @@ internal abstract class BasePage
 
     private static string GetHeaderText(string pageTitle)
     {
-        var sb = new StringBuilder();
-        sb.AppendLine("----------------------------------------");
-        sb.AppendLine($"{Application.Title}: {pageTitle}");
-        sb.AppendLine("----------------------------------------");
-        sb.AppendLine();
-        return sb.ToString();
+        var builder = new StringBuilder();
+        builder.AppendLine("----------------------------------------");
+        builder.AppendLine($"{Application.Title}: {pageTitle}");
+        builder.AppendLine("----------------------------------------");
+        builder.AppendLine();
+        return builder.ToString();
     }
 
     #endregion

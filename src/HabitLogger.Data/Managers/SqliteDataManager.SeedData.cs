@@ -1,12 +1,10 @@
-﻿// --------------------------------------------------------------------------------------------------
-// HabitLogger.Data.Managers.SqliteDataManager.SeedData
-// --------------------------------------------------------------------------------------------------
-// Partial class for data manager methods specific to seeding the databe with mock data.
-// --------------------------------------------------------------------------------------------------
-using Microsoft.Data.Sqlite;
+﻿using Microsoft.Data.Sqlite;
 
 namespace HabitLogger.Data.Managers;
 
+/// <summary>
+/// Partial class for data manager methods specific to seeding the databe with mock data.
+/// </summary>
 public partial class SqliteDataManager
 {
     #region Constants

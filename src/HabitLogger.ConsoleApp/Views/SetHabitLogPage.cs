@@ -1,14 +1,11 @@
-﻿// --------------------------------------------------------------------------------------------------
-// HabitLogger.ConsoleApp.Views.SetHabitLogPage
-// --------------------------------------------------------------------------------------------------
-// Gets the required input from a user to update an existing habit log.
-// --------------------------------------------------------------------------------------------------
-using System;
-using HabitLogger.ConsoleApp.Utilities;
+﻿using HabitLogger.ConsoleApp.Utilities;
 using HabitLogger.Models;
 
 namespace HabitLogger.ConsoleApp.Views;
 
+/// <summary>
+/// Represents the page for updating an existing <see cref="HabitLog"/> entry.
+/// </summary>
 internal class SetHabitLogPage : BasePage
 {
     #region Constants
@@ -24,7 +21,7 @@ internal class SetHabitLogPage : BasePage
 
         WriteHeader($"{PageTitle} ({habit.Name})");
 
-        DateTime? date = ConsoleHelper.GetDate($"Enter the date (format yyyy-MM-dd) or 0 to retain '{habitLog.Date:yyyy-MM-dd}': ");
+        DateTime? date = ConsoleHelper.GetDate($"Enter the date (format yyyy-MM-dd) or 0 to retain '{habitLog.Date:yyyy-MM-dd}': ", "yyyy-MM-dd");
         if (!date.HasValue)
         {
             date = habitLog.Date;

@@ -1,13 +1,11 @@
-﻿// --------------------------------------------------------------------------------------------------
-// HabitLogger.Data.Entities.HabitEntity
-// --------------------------------------------------------------------------------------------------
-// Represents a database entity in the habit table.
-// --------------------------------------------------------------------------------------------------
-using System.Data;
+﻿using System.Data;
 using HabitLogger.Data.Extensions;
 
 namespace HabitLogger.Data.Entities;
 
+/// <summary>
+/// Represents a database entity in the habit table.
+/// </summary>
 public class HabitEntity
 {
     #region Constructors

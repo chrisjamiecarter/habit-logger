@@ -1,13 +1,11 @@
-﻿// --------------------------------------------------------------------------------------------------
-// HabitLogger.ConsoleApp.Views.NewHabitPage
-// --------------------------------------------------------------------------------------------------
-// Gets the required input from a user to add a new habit.
-// --------------------------------------------------------------------------------------------------
-using HabitLogger.ConsoleApp.Utilities;
+﻿using HabitLogger.ConsoleApp.Utilities;
 using HabitLogger.Models;
 
 namespace HabitLogger.ConsoleApp.Views;
 
+/// <summary>
+/// Represents the page for recording a new <see cref="Habit"/> entry.
+/// </summary>
 internal class AddHabitPage : BasePage
 {
     #region Constants

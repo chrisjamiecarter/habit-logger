@@ -1,13 +1,11 @@
-﻿// --------------------------------------------------------------------------------------------------
-// HabitLogger.Data.Managers.SqliteDataManager.HabitReport
-// --------------------------------------------------------------------------------------------------
-// Partial class for data manager methods specific to the HabitReport entity.
-// --------------------------------------------------------------------------------------------------
-using HabitLogger.Data.Entities;
+﻿using HabitLogger.Data.Entities;
 using Microsoft.Data.Sqlite;
 
 namespace HabitLogger.Data.Managers;
 
+/// <summary>
+/// Partial class for data manager methods specific to the HabitReport entity.
+/// </summary>
 public partial class SqliteDataManager
 {
     #region Constants

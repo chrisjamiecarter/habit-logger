@@ -1,11 +1,8 @@
-﻿// --------------------------------------------------------------------------------------------------
-// HabitLogger.ConsoleApp.Enums.PageStatus
-// --------------------------------------------------------------------------------------------------
-// Enum for page status'. Controls flow of views.
-// --------------------------------------------------------------------------------------------------
+﻿namespace HabitLogger.ConsoleApp.Enums;
 
-namespace HabitLogger.ConsoleApp.Enums;
-
+/// <summary>
+/// Enum for page status'. Controls flow of views.
+/// </summary>
 internal enum PageStatus
 {
     Opened,

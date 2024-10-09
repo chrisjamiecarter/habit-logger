@@ -1,12 +1,12 @@
-﻿// --------------------------------------------------------------------------------------------------
-// HabitLogger.Models.HabitLogSumReport
-// --------------------------------------------------------------------------------------------------
-// Habit Log Sum Report data transformation object.
-// --------------------------------------------------------------------------------------------------
-using HabitLogger.Data.Entities;
+﻿using HabitLogger.Data.Entities;
 
 namespace HabitLogger.Models;
 
+/// <summary>
+/// Represents a HabitLogSumReport data transfer object (DTO), 
+/// summarizing the total quantity of a Habit along with its name and measurement, 
+/// initialized from an entity.
+/// </summary>
 public class HabitLogSumReport
 {
     #region Constructors

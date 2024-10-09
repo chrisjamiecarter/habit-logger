@@ -1,13 +1,11 @@
-﻿// --------------------------------------------------------------------------------------------------
-// HabitLogger.Data.Entities.HabitLogReportEntity
-// --------------------------------------------------------------------------------------------------
-// Represents a database entity in the vw_habit_log_report view.
-// --------------------------------------------------------------------------------------------------
-using System.Data;
+﻿using System.Data;
 using HabitLogger.Data.Extensions;
 
 namespace HabitLogger.Data.Entities;
 
+/// <summary>
+/// Represents a database entity in the vw_habit_log_report view.
+/// </summary>
 public class HabitLogReportEntity
 {
     #region Constructors
